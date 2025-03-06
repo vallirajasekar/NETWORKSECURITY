@@ -5,6 +5,8 @@ statsmodels
 pymongo
 Certifi
 pymongo[srv]==3.6
+scikit-learn
+PyYAML
 
 
 

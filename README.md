@@ -35,6 +35,11 @@ git push -u origin main
 This repository is dedicated to **Network Security**, covering various aspects such as security protocols, threat detection, and risk mitigation strategies.
 
 ---
+
+
+If Issue in Pymongo install 
+pip install --upgrade pymongo
+ 
   
 ### Author  
 [**Valli Rajasekar**](https://github.com/vallirajasekar)  
