@@ -51,11 +51,11 @@ class ModelTrainer:
 
             },
 
-            "Gradient Boosting":{
+            "Gardient Boosting":{
                 'learning_rate':[.1,0.01]
             },
            
-            "Logistic Regression":{},
+            "Logistic regression":{},
             "AdaBoost":{
                 'n_estimators':[8,16]
             }
@@ -65,12 +65,14 @@ class ModelTrainer:
         model_report:dict=evaluate_models(X_train=X_train,y_train=y_train,X_test=x_test,y_test=y_test,models=models,params=params)
 
         best_model_score=max(sorted(model_report.values()))
+        print(best_model_score)
 
         ## To get the Best Model from the Dictionary
 
         best_model_name=list(model_report.keys())[list(model_report.values()).index(best_model_score)]
 
         best_model=models[best_model_name]
+        best_model.fit(X_train, y_train)
         y_train_pred=best_model.predict(X_train)
 
         classification_train_metric=get_classification_score(y_true=y_test,y_pred=y_train_pred)
@@ -109,6 +111,10 @@ class ModelTrainer:
             test_arr=load_numpy_array_data(test_file_path)
 
             x_train,y_train,x_test,y_test=(train_arr[:,:-1],train_arr[:,-1],test_arr[:,:-1],test_arr[:,-1])
+            print(x_train.shape)
+            print(x_test.shape)
+            print(y_train.shape)
+            print(y_test.shape)
 
             model_trainer_artifact=self.train_model(x_train,y_train,x_test,y_test)
             return model_trainer_artifact
